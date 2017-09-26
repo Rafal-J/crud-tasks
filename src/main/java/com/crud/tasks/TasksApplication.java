@@ -24,9 +24,9 @@ public class TasksApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TasksApplication.class, args);
 
-		ApplicationContext context =
+		/*ApplicationContext context =
 				new AnnotationConfigApplicationContext("com.crud.tasks");
 		TaskController taskController = (TaskController) context.getBean("createTaskController");
-		System.out.println(taskController.getTask((long) 1).getContent());
+		System.out.println(taskController.getTask((long) 1).getContent());*/
 	}
 }

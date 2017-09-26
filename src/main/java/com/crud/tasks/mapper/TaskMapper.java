@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 
 @Component
 public class TaskMapper {
-    public Task map(TaskDto taskDto) {
+    public Task mapToTask(TaskDto taskDto) {
         return new Task(taskDto.getId(),
                 taskDto.getTitle(),
                 taskDto.getContent());
     }
 
-    public TaskDto mapDto(Task task) {
+    public TaskDto mapToDto(Task task) {
         return new TaskDto(task.getId(),
                 task.getTitle(),
                 task.getContent());
@@ -23,7 +23,7 @@ public class TaskMapper {
 
     public List<TaskDto> mapToTaskDtoList(final List<Task> taskList) {
         return taskList.stream()
-                .map(t -> mapDto(t))
+                .map(t -> mapToDto(t))
                 .collect(Collectors.toList());
     }
 }
