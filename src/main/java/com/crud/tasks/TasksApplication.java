@@ -8,7 +8,10 @@ import com.crud.tasks.service.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -20,7 +23,10 @@ public class TasksApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TasksApplication.class, args);
-		TaskController taskController = new TaskController();
-		System.out.println(taskController.getTask((long)1).getContent());
+
+		ApplicationContext context =
+				new AnnotationConfigApplicationContext("com.crud.tasks");
+		TaskController taskController = (TaskController) context.getBean("createTaskController");
+		System.out.println(taskController.getTask((long) 1).getContent());
 	}
 }
