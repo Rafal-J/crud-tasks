@@ -1,6 +1,7 @@
 package com.crud.tasks;
 
 import com.crud.tasks.controller.TaskController;
+import com.crud.tasks.controller.TaskNotFoundException;
 import com.crud.tasks.domain.Task;
 import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.repository.TaskRepository;
@@ -24,9 +25,14 @@ public class TasksApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TasksApplication.class, args);
 
-		/*ApplicationContext context =
+		ApplicationContext context =
 				new AnnotationConfigApplicationContext("com.crud.tasks");
 		TaskController taskController = (TaskController) context.getBean("createTaskController");
-		System.out.println(taskController.getTask((long) 1).getContent());*/
+		try {
+			System.out.println(taskController.getTask((long) 1).getContent());
+		}
+		catch(TaskNotFoundException o){
+
+		}
 	}
 }
