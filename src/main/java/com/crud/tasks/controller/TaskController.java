@@ -43,7 +43,5 @@ public class TaskController {
     public void deleteTask(@RequestParam Long taskId) throws TaskNotFoundException {
         dbService.getTaskById(taskId).orElseThrow(TaskNotFoundException::new);
         dbService.deleteTaskById(taskId);
-
     }
-
 }
