@@ -1,5 +1,6 @@
 package com.reflections;
 
+import com.reflections.annotations.MyAnnotation;
 import com.reflections.pairs.GenericClassExecutor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,5 +11,7 @@ public class KodillaReflectionsApplication {
 	public static void main(String[] args) {
 		//SpringApplication.run(KodillaReflectionsApplication.class, args);
 		GenericClassExecutor.genericClassExecuting();
+		System.out.println();
+		MyAnnotation.testingAnnotations();
 	}
 }

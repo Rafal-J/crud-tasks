@@ -1,0 +1,31 @@
+package com.reflections.annotations;
+
+import static org.reflections.ReflectionUtils.*;
+
+import com.reflections.pairs.MyGenericClass;
+import org.reflections.Reflections;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.Set;
+
+import static org.reflections.ReflectionUtils.getAllMethods;
+
+public class MyAnnotation {
+    public static void testingAnnotations() {
+        Reflections reflections = new Reflections("my.Project");
+        Set<Class<?>> myAnnotations =
+                reflections.getTypesAnnotatedWith(AnnotationDefinition.class);
+        System.out.println("\nLiczba klas z adnotacją: " + myAnnotations.size());
+
+        System.out.println("\n");
+
+        Class testClass = TestClass1.class;
+        Set<Method> getters = getAllMethods(testClass,
+                withModifier(Modifier.PUBLIC), withParametersCount(0), withAnnotation(MethodAnnotationDefinition.class));
+        System.out.println("Klasa " + testClass.getSimpleName() + " posiada " + getters.size() + " metody z adnotacją.");
+        getters.stream()
+                .map(c -> c.getName())
+                .forEach(System.out::println);
+    }
+}
