@@ -21,10 +21,10 @@ public class MyAnnotation {
         System.out.println("\n");
 
         Class testClass = TestClass1.class;
-        Set<Method> getters = getAllMethods(testClass,
+        Set<Method> methods = getAllMethods(testClass,
                 withModifier(Modifier.PUBLIC), withParametersCount(0), withAnnotation(MethodAnnotationDefinition.class));
-        System.out.println("Klasa " + testClass.getSimpleName() + " posiada " + getters.size() + " metody z adnotacją.");
-        getters.stream()
+        System.out.println("Klasa " + testClass.getSimpleName() + " posiada " + methods.size() + " metody z adnotacją.");
+        methods.stream()
                 .map(c -> c.getName())
                 .forEach(System.out::println);
     }
