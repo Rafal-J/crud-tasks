@@ -40,9 +40,19 @@ public class TablesAndColumnsCreator {
                     }
                 }
 
+                // ;-)
+
+                System.out.print("\nTworzenie tabeli " + myTable.getSimpleName());
+                for(int i = 0; i < 25; i++) {
+                    System.out.print(".");
+                    for(int k = 0; k < 300000000; k++){
+                    }
+                }
+
                 sqlQuery = "CREATE TABLE " + myTable.getSimpleName() + "S" + " (ID SERIAL PRIMARY KEY, " + sqlQuery +
                         ");";
                 statement.executeUpdate(sqlQuery);
+                System.out.print(" 100%");
 
                 sqlQuery = "";
                 methodCounter = 0;
