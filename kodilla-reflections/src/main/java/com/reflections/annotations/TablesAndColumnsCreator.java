@@ -12,8 +12,8 @@ import java.util.Set;
 
 import static org.reflections.ReflectionUtils.*;
 
-public class DatabaseCreator {
-    public static void createDatabase() throws SQLException {
+public class TablesAndColumnsCreator {
+    public static void createTablesAndColumns() throws SQLException {
 
             DbManager dbManager = DbManager.getInstance();
 
