@@ -1,8 +1,8 @@
 package com.reflections.annotations;
 
-@AnnotationDefinition
+@MyTable
 public class TestClass1 {
-    @MethodAnnotationDefinition
+    @MyColumn
     public static void testMethod1(){
         System.out.println("Test");
     }
@@ -11,7 +11,7 @@ public class TestClass1 {
         System.out.println("Test");
     }
 
-    @MethodAnnotationDefinition
+    @MyColumn
     public static void testMethod3(){
         System.out.println("Test");
     }
