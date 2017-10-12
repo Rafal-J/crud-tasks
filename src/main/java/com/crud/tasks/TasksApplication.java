@@ -1,29 +1,21 @@
 package com.crud.tasks;
 
-import com.crud.tasks.controller.TaskController;
-import com.crud.tasks.controller.TaskNotFoundException;
-import com.crud.tasks.domain.Task;
-import com.crud.tasks.domain.TaskDto;
-import com.crud.tasks.repository.TaskRepository;
-import com.crud.tasks.service.DbService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.List;
 
 @SpringBootApplication
-public class TasksApplication {
+public class TasksApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TasksApplication.class, args);
 
+	}
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(TasksApplication.class);
 	}
 }

@@ -1,11 +1,8 @@
 package com.reflections.annotations;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Set;
@@ -31,7 +28,6 @@ public class TablesAndColumnsCreator {
                 columnsFromMethods = getAllMethods(myTable, withAnnotation(MyColumn.class));
 
                 for(Method myMethod : columnsFromMethods) {
-
                     sqlQuery = sqlQuery + myMethod.getName() + " VARCHAR(100)";
                     methodCounter++;
 
@@ -51,7 +47,9 @@ public class TablesAndColumnsCreator {
 
                 sqlQuery = "CREATE TABLE " + myTable.getSimpleName() + "S" + " (ID SERIAL PRIMARY KEY, " + sqlQuery +
                         ");";
+
                 statement.executeUpdate(sqlQuery);
+
                 System.out.print(" 100%");
 
                 sqlQuery = "";
