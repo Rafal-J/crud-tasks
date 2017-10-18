@@ -3,6 +3,7 @@ package com.reflections;
 import com.reflections.annotations.TablesAndColumnsCreator;
 import com.reflections.annotations.MyAnnotation;
 import com.reflections.pairs.GenericClassExecutor;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 public class KodillaReflectionsApplication {
 
 	public static void main(String[] args) throws SQLException {
-		//SpringApplication.run(KodillaReflectionsApplication.class, args);
+		SpringApplication.run(KodillaReflectionsApplication.class, args);
 		GenericClassExecutor.genericClassExecuting();
 		System.out.println();
 		MyAnnotation.testingAnnotations();
