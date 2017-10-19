@@ -12,12 +12,17 @@ import java.sql.SQLException;
 public class KodillaReflectionsApplication {
 
 	public static void main(String[] args) throws SQLException {
+		String test = "Kodilladasda";
+		System.out.println("Test: " + test.indexOf("Kodilla"));
+
 		SpringApplication.run(KodillaReflectionsApplication.class, args);
 		GenericClassExecutor.genericClassExecuting();
 		System.out.println();
 		MyAnnotation.testingAnnotations();
 
-		TablesAndColumnsCreator.createTablesAndColumns();
+		//TablesAndColumnsCreator.createTablesAndColumns();
+
+
 
 	}
 }

@@ -11,6 +11,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class TrelloClient {
@@ -24,20 +25,31 @@ public class TrelloClient {
     @Value("${trello.app.token}")
     private String trelloToken;
 
+    @Value("${trello.username}")
+    private String trelloUsername;
+
     @Autowired
     private RestTemplate restTemplate;
 
     public List<TrelloBoardDto> getTrelloBoards() {
 
-        URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members/kodillauser/boards")
-                .queryParam("key", trelloAppKey)
-                .queryParam("token", trelloToken).build().encode().toUri();
+        URI url = urlBuilding();
 
         TrelloBoardDto[] boardsResponse = restTemplate.getForObject(url, TrelloBoardDto[].class);
 
-        if (boardsResponse != null) {
-            return Arrays.asList(boardsResponse);
-        }
-        return new ArrayList<>();
+        return Optional.ofNullable(Arrays.asList(boardsResponse)).orElse(new ArrayList<TrelloBoardDto>());
+    }
+
+    private URI urlBuilding() {
+        URI url = UriComponentsBuilder.fromHttpUrl(trelloApiEndpoint + "/members/" + trelloUsername + "/boards")
+                .queryParam("key", trelloAppKey)
+                .queryParam("token", trelloToken)
+                .queryParam("fields", "id,name").build().encode().toUri();
+
+        return url;
     }
 }
+
+/*
+        (Wyzwanie - Trudne zadanie) Przebuduj warunek decydujący o tym co należy zwrócić w metodzie getTrelloBoards, wykorzystując klasę Optional, o której wspominaliśmy w module 15.
+         */
