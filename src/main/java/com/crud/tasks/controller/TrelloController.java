@@ -21,21 +21,8 @@ public class TrelloController {
 
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
-    public void getTrelloBoards() {
-
-        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
-
-        trelloBoards.stream()
-                .filter(c -> c.getId() != null)
-                .filter(c -> c.getName() != null)
-                .filter(c -> c.getName().indexOf("Kodilla") > -1)
-                .forEach(trelloBoardDto -> {
-                    System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName());
-                    System.out.println("Ta tablica zawiera następujące listy:");
-                    trelloBoardDto.getLists().forEach(c -> System.out.println(c.getId() + " - " + c.getName() + " - " + c.isClosed()));
-
-                });
-        System.out.println();
+    public List<TrelloBoardDto> getTrelloBoards() {
+        return trelloClient.getTrelloBoards();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
