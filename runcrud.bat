@@ -28,7 +28,7 @@ goto fail
 cd \
 cd apache-tomcat-9.0.1\bin\
 call startup.bat
-sleep 40
+sleep 20
 goto end
 
 :fail
