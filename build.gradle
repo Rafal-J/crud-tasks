@@ -28,9 +28,9 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE')
 	compile(group: 'org.projectlombok', name: 'lombok', version: '1.16.18')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa:1.5.8.RELEASE')
-	//compile('mysql:mysql-connector-java')
+	compile('mysql:mysql-connector-java')
 	compile('org.springframework.boot:spring-boot-starter-mail:1.5.8.RELEASE')
-	compile('org.postgresql:postgresql')
+	//compile('org.postgresql:postgresql')
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
