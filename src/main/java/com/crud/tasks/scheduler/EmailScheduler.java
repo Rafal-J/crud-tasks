@@ -22,18 +22,11 @@ public class EmailScheduler {
     private AdminConfig adminConfig;
 
     private static final String SUBJECT = "Zadanie: codzienna wysyłka maila informacyjnego";
+
     @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
         long size = taskRepository.count();
-
-        String taskWord = "zadanie";
-        if(size%10 == 0 || size%10 > 4 || size%10 == 1 && size > 1) {
-            taskWord = "zadań";
-        }
-        else if(size%10 > 1 && size%10 < 5) {
-            taskWord = "zadania";
-        }
-
+        String taskWord = TaskWord.chooseRightWord(size);
         simpleEmailService.send(new Mail(
                 adminConfig.getAdminMail(),
                 SUBJECT,
