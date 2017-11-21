@@ -2,10 +2,10 @@ package com.crud.tasks.controller;
 
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
-import com.crud.tasks.domain.TrelloList;
 import com.crud.tasks.domain.TrelloListDto;
 import com.crud.tasks.domain.createdtrellocard.CreatedTrelloCardDto;
 import com.crud.tasks.trello.facade.TrelloFacade;
+import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -24,6 +24,7 @@ import static org.mockito.Mockito.when;
 
 import org.mockito.ArgumentMatcher;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -75,9 +76,22 @@ public class TrelloControllerTestSuite {
 
     @Test
     public void shouldCreateTrelloCard() throws Exception {
+        //Given
         TrelloCardDto trelloCard = new TrelloCardDto("Moje zadanie", "Wytrzepać dywan", "top", "7");
-        CreatedTrelloCardDto createdTrelloCard = new CreatedTrelloCardDto("12", "Zmywanie", "http://tinyrul.com");
+        CreatedTrelloCardDto createdTrelloCard = new CreatedTrelloCardDto("12", "Moje zadanie", "http://tinyurl.com");
 
         when(trelloFacade.createCard(ArgumentMatchers.any(TrelloCardDto.class))).thenReturn(createdTrelloCard);
+
+        Gson gson = new Gson();
+        String jsonContent = gson.toJson(trelloCard);
+
+        //when@then
+        mockMvc.perform(post("/ver1/trello/createTrelloCard")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8")
+                .content(jsonContent))
+                .andExpect(jsonPath("$.id", is("12")))
+                .andExpect(jsonPath("$.name", is("Moje zadanie")))
+                .andExpect(jsonPath("$.shortUrl", is("http://tinyurl.com")));
     }
 }

@@ -32,21 +32,23 @@ public class DbTestSuite {
 
     @Test
     public void getOneTaskTest() {
-        Task myTask = taskRepository.findById((long)1).orElse(new Task(null, "Test", "Test"));
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        Task myTask = taskRepository.findById((long) 1).orElse(new Task(null, "Test", "Test"));
         Assert.assertTrue(myTask.getId() == 1);
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
-        Task myTask2 = dbService.getTaskById((long)3).orElse(new Task(null, "Prasowanie", "Koszule dziadka"));
+        Task myTask2 = dbService.getTaskById((long) 3).orElse(new Task(null, "Prasowanie", "Koszule dziadka"));
 
         TaskDto myTask4 = new TaskDto(null, "Test", "Test");
         taskController.createTask(myTask4);
 
-        Task myTask5= new Task((long)3, "Prasowanie", "Koszule dziadka");
+        Task myTask5 = new Task((long) 3, "Prasowanie", "Koszule dziadka");
         taskRepository.save(myTask5);
 
-        Task myTask6= new Task((long)4, "Prasowanie", "Koszule dziadka");
+        Task myTask6 = new Task((long) 4, "Prasowanie", "Koszule dziadka");
         dbService.saveTask(myTask6);
 
-        TaskDto myTask7= new TaskDto((long)5, "Prasowanie", "Koszule dziadka");
+        TaskDto myTask7 = new TaskDto((long) 5, "Prasowanie", "Koszule dziadka");
         taskController.updateTask(myTask7);
 
     }

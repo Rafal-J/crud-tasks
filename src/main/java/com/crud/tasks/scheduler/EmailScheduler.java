@@ -23,7 +23,7 @@ public class EmailScheduler {
 
     private static final String SUBJECT = "Zadanie: codzienna wysyłka maila informacyjnego";
 
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 1000000)
     public void sendInformationEmail() {
         long size = taskRepository.count();
         String taskWord = TaskWord.chooseRightWord(size);
