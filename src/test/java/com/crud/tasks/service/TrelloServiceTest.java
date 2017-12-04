@@ -31,6 +31,9 @@ public class TrelloServiceTest {
     @Mock
     private AdminConfig adminConfig;
 
+    @Mock
+    private SimpleEmailService simpleEmailService;
+
     @Test
     public void fetchTrelloBoardsTest() {
         //given

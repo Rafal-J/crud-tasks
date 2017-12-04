@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang ="pl">
+<html lang ="pl" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,17 @@
 
 <body>
     <h1>Jak się Wam podoba?</h1>
+    <!--/*@thymesVar id="variable" type="com.crud.tasks.controller"*/-->
+    <span th:text="${variable}"></span>
+
+    <br>
+    <!--/*@thymesVar id="one" type="com.crud.tasks.controller"*/-->
+    <!--/*@thymesVar id="two" type="com.crud.tasks.controller"*/-->
+
+    <p><B>2 * 2 = <span th:text="${two}+${two}"></span></B></p>
+    <p><B>2 * 2 + 2 = <span th:text="${two}*${two}+${two}"></span></B></p>
+    <p><B>2 - 2 * 2 = <span th:text="${two}-${two}*${two}"></span></B></p>
+
 </body>
 </html>
 
