@@ -27,7 +27,6 @@ public class SimpleEmailService {
         LOGGER.info("Przygotowanie do wysłania wiadomości");
 
         try {
-            SimpleMailMessage mailMessage = createMailMessage(mail);
             javaMailSender.send(createMimeMessage(mail));
 
             LOGGER.info("Wiadomość została wysłana");
@@ -42,7 +41,7 @@ public class SimpleEmailService {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail), true);
         };
     }
     private SimpleMailMessage createMailMessage(final Mail mail) {
@@ -50,7 +49,7 @@ public class SimpleEmailService {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
-        mailMessage.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()));
+        mailMessage.setText(mailCreatorService.buildTrelloCardEmail(mail));
 
         return mailMessage;
     }

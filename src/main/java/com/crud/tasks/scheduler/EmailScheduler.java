@@ -31,6 +31,7 @@ public class EmailScheduler {
                 adminConfig.getAdminMail(),
                 SUBJECT,
                 "Dzisiaj masz do wykonania " + size + " " + taskWord,
-                null));
+                null,
+                "daily-mail"));
     }
 }
