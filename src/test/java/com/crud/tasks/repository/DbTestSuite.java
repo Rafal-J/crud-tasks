@@ -33,8 +33,8 @@ public class DbTestSuite {
     @Test
     public void getOneTaskTest() {
         System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        Task myTask = taskRepository.findById((long) 1).orElse(new Task(null, "Test", "Test"));
-        Assert.assertTrue(myTask.getId() == 1);
+        Task myTask = taskRepository.findById((long) 2).orElse(new Task(null, "Test", "Test"));
+        Assert.assertTrue(myTask.getId() == 2);
         System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 
         Task myTask2 = dbService.getTaskById((long) 3).orElse(new Task(null, "Prasowanie", "Koszule dziadka"));
@@ -52,5 +52,4 @@ public class DbTestSuite {
         taskController.updateTask(myTask7);
 
     }
-
 }

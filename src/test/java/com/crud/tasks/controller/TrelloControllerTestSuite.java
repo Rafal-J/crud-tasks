@@ -46,7 +46,7 @@ public class TrelloControllerTestSuite {
         when(trelloFacade.fetchTrelloBoards()).thenReturn(trelloBoards);
 
         //when&then
-        mockMvc.perform(get("/ver1/trello/getTrelloBoards").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/ver1/trello/boards").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200))
                 .andExpect(jsonPath("$", hasSize(0)));
     }
@@ -63,7 +63,7 @@ public class TrelloControllerTestSuite {
         when(trelloFacade.fetchTrelloBoards()).thenReturn(trelloBoards);
 
         //when&then
-        mockMvc.perform(get("/ver1/trello/getTrelloBoards").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/ver1/trello/boards").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200))
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].id", is("4")))
@@ -86,7 +86,7 @@ public class TrelloControllerTestSuite {
         String jsonContent = gson.toJson(trelloCard);
 
         //when@then
-        mockMvc.perform(post("/ver1/trello/createTrelloCard")
+        mockMvc.perform(post("/ver1/trello/cards")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8")
                 .content(jsonContent))

@@ -32,6 +32,7 @@ public class EmailScheduler {
                 SUBJECT,
                 "Dzisiaj masz do wykonania " + size + " " + taskWord,
                 null,
-                "daily-mail"));
+                "daily-mail"
+        ));
     }
 }
